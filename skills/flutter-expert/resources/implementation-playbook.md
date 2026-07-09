@@ -89,6 +89,11 @@ layer.
 sealed class Failure {
   const Failure(this.message);
   final String message;
+
+  // Override toString so UI code that renders err.toString() shows the
+  // mapped message instead of "Instance of 'NetworkFailure'".
+  @override
+  String toString() => message;
 }
 
 class NetworkFailure extends Failure {
